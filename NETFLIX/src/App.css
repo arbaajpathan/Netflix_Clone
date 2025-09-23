@@ -1,0 +1,467 @@
+/* ========================================= */
+/*      BACKGROUND & GENERAL LAYOUT          */
+/* ========================================= */
+
+.home-bg {
+  width: 100%;
+  height: 100vh;
+  /* Use 100vh to ensure it covers the full viewport height */
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  filter: brightness(50%);
+  /* Made it slightly darker to match Netflix */
+}
+
+/* ========================================= */
+/*              NAVBAR/HEADER                */
+/* ========================================= */
+
+.Netflix_Logo {
+  width: 100px;
+  height: auto;
+  /* Use auto for height to maintain aspect ratio */
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  cursor: pointer;
+}
+
+.navbar {
+  float: right;
+  margin: 20px 40px;
+}
+
+.signin-btn {
+  padding: 8px 16px;
+  background-color: #e50914;
+  border: none;
+  border-radius: 3px;
+  /* Slightly more rounded corners */
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.language-btn {
+  padding: 8px 16px;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Give it a transparent background */
+  border: 1px solid #aaa;
+  /* Lighter grey border */
+  border-radius: 3px;
+  color: white;
+  font-weight: 400;
+  cursor: pointer;
+  margin-right: 20px;
+  /* Use right margin instead of left */
+}
+
+/* ========================================= */
+/*        MIDDLE HERO CONTENT SECTION        */
+/* ========================================= */
+
+.middle {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+  /* Add some padding for smaller screens */
+  box-sizing: border-box;
+  /* Ensures padding doesn't add to the width */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Text Styling */
+.middle h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  /* Bolder font for main heading */
+  max-width: 640px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.middle h2 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 1rem 0 0 0;
+}
+
+.middle h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 1.5rem 0 0 0;
+}
+
+/* ========================================= */
+/*           EMAIL FORM STYLING              */
+/* ========================================= */
+
+/* This new container uses flexbox to align the input and button */
+.email-form {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Updated styles for the input field */
+.email-input {
+  width: 450px;
+  height: 40px;
+  padding: 10px;
+  font-size: 1rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black */
+  border: 1px solid #8c8c8c;
+  /* Rounds the left corners only to connect with the button */
+  border-radius: 5px;
+  outline: none;
+}
+
+.email-input::placeholder {
+  color: #ccc;
+}
+
+/* Updated styles for the "Get Started" button */
+.get-started-btn {
+  height: 60px;
+  /* Match the input height perfectly */
+  padding: 0 30px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  cursor: pointer;
+  /* Rounds the right corners only */
+  border-radius: 5px;
+  /* Prevents text from wrapping */
+  white-space: nowrap;
+}
+
+/* src/components/MovieList.css */
+
+.movie-row {
+  /* --- Centering The Container --- */
+  width: 95%;
+  /* Make it wider to feel more like Netflix */
+  margin: 40px;
+  /* Sets top/bottom margin to 40px and left/right to auto */
+
+  /* --- Styling the Content Inside --- */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  /* `justify-content` is not needed for this layout */
+}
+
+/* NEW: Wrapper for positioning the buttons relative to the posters */
+.posters-wrapper {
+  position: relative;
+  /* This is the anchor for the absolute buttons */
+}
+
+.movie-posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px 0;
+  /* Adjust padding */
+  /* This enables smooth scrolling when the buttons are clicked */
+  scroll-behavior: smooth;
+}
+
+.movie-posters::-webkit-scrollbar {
+  display: none;
+  /* Hides the scrollbar */
+}
+
+.poster-container {
+  margin-right: 10px;
+  transition: transform 450ms;
+}
+
+.poster-container:hover {
+  transform: scale(1.08);
+}
+
+.movie-poster {
+  object-fit: contain;
+  max-height: 200px;
+  border-radius: 4px;
+}
+
+/* NEW: Styles for the scroll buttons */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Vertically centers the button */
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 35px;
+  height: 60%;
+  /* Makes the button tall */
+  z-index: 10;
+  cursor: pointer;
+  opacity: 0;
+  /* Hide the buttons by default */
+  transition: opacity 0.3s ease;
+}
+
+/* Show buttons when the user hovers over the wrapper */
+.posters-wrapper:hover .scroll-btn {
+  opacity: 1;
+}
+
+.scroll-btn.left {
+  left: 0;
+}
+
+.scroll-btn.right {
+  right: 0;
+}
+
+.loading,
+.error {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+.custom-card {
+  max-width: 18rem;
+  border: 1px solid grey;
+  /* thin grey border */
+  border-radius: 6px;
+  /* smooth corners */
+  background-color: transparent;
+  /* keep background transparent */
+  color: white;
+  /* text white */
+  margin: 20px auto;
+  /* center with spacing */
+  padding: 10px;
+}
+
+.custom-card .card-header,
+.custom-card .card-footer {
+  border-bottom: 1px solid grey;
+  border-top: 1px solid grey;
+  padding: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.custom-card .card-body {
+  padding: 12px;
+}
+
+.custom-card .card-title {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.custom-card .card-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.reasn {
+  color: white;
+  font-size: 2rem;
+  padding-left: 35px;
+  margin-top: 40px;
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+}
+
+/* src/components/FAQ.css */
+
+.faq-section {
+  background-color: #000;
+  color: #fff;
+  padding: 70px 0;
+  text-align: center;
+}
+
+.faq-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+
+.faq-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  /* Change this from 80% */
+  max-width: 1300px;
+  /* Increase this from 815px */
+}
+
+.faq-item {
+  margin-bottom: 8px;
+}
+
+.faq-question {
+  /* Reset button styles */
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 0;
+
+  /* Custom styles */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #303030;
+  padding: 20px 30px;
+  color: white;
+  font-size: 1.6rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-icon {
+  font-size: 3rem;
+  font-weight: 200;
+  /* Makes the '+' and 'x' look thin */
+}
+
+/* --- The Magic for the Animation --- */
+.faq-answer {
+  background-color: #303030;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1),
+    padding 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+  text-align: left;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.faq-answer.open {
+  max-height: 600px;
+  /* A large value to allow content to expand */
+  padding: 30px;
+  margin-top: 1px;
+  /* Creates the thin line between question and answer */
+}
+
+/* src/components/Membership.css */
+
+.membership-section {
+  background-color: #000;
+  color: #fff;
+  padding: 50px 0;
+  text-align: center;
+  /* Optional: adds a separator line like on Netflix */
+}
+
+.membership-section h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+/* This is the key container for the horizontal layout */
+.membership-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.membership-input {
+  width: 450px;
+  height: 40px;
+  padding: 10px;
+  font-size: 1rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #8c8c8c;
+  border-radius: 2px 0 0 2px;
+  outline: none;
+}
+
+.membership-button {
+  height: 60px;
+  padding: 0 30px;
+  background-color: #e50914;
+  /* Netflix red */
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+  white-space: nowrap;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  color: grey;
+}
+
+.footer ul {
+  list-style-type: none;
+  /* Removes the bullet points */
+  padding: 0;
+  /* Removes default padding */
+  margin: 0;
+}
+
+.footer li {
+  margin-bottom: 15px;
+  /* Adds 15px of space below each link */
+}
+
+.language-footer {
+  margin-left: 80px;
+  margin-top: 40px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid grey;
+  padding: 8px 16px;
+
+}
+
+.footer-end {
+  margin-left: 80px;
+  color: grey;
+  margin-top: 20px;
+  margin-bottom: 180px;
+}
