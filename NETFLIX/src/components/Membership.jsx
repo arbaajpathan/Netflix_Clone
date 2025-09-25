@@ -1,25 +1,49 @@
 // src/components/Membership.jsx
 
-import React from 'react';
+import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react'; // <-- Import hooks
+
+
+
 
 function Membership() {
+
+    const [item, setitem] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            setitem(true)
+        }
+
+    }, [])
     return (
         <div className="membership-section">
-            <h3>
-                Ready to watch? Enter your email to create or restart your membership.
-            </h3>
-            {/* This new div will align the input and button horizontally */}
-            <div className="membership-form">
-                <input
-                    className="membership-input"
-                    type="email"
-                    placeholder="Email address"
-                />
-                <button className="membership-button">
-                    Get Started &#8250;
-                </button>
-            </div>
+            {/* 3. The conditional rendering now uses our local state variable 'isLoggedIn' */}
+            {item ? (
+                // IF LOGGED IN, show this button:
+                <div className="email-form">
+                    <Link to="/">
+                        <button className="get-started-btn">
+                            Finish Sign Up
+                        </button>
+                    </Link>
+                </div>
+            ) : (
+                // IF LOGGED OUT, show the original form:
+                <div className="email-form">
+                    <input
+                        className="email-input"
+                        type="email"
+                        placeholder="Email address"
+                    />
+                    <button className="get-started-btn">Get Started &gt;</button>
+                </div>
+            )}
         </div>
+
+
     );
 }
 

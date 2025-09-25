@@ -48,7 +48,6 @@ function Footer() {
             </div>
 
         </footer>
-        <button className="language-footer">Language ▼ </button>
         <div className="footer-end">
             <h6>Netflix India</h6>
             <h6>This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.</h6>

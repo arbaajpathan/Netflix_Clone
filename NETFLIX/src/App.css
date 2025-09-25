@@ -1,3 +1,13 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  min-height: 100vh;
+}
+
 /* ========================================= */
 /*      BACKGROUND & GENERAL LAYOUT          */
 /* ========================================= */
@@ -641,10 +651,146 @@
 
 .recaptcha-info a {
   color: #0071eb;
-  /* Blue link for "Learn more" */
   text-decoration: none;
 }
 
 .recaptcha-info a:hover {
   text-decoration: underline;
+}
+
+/* ========================================= */
+/*         FINISH SIGN UP PAGE STYLES        */
+/* ========================================= */
+
+/* Main page container - This is the key to the fix */
+.finish-signup-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+/* The new header for this specific page */
+.finish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid #e6e6e6;
+  flex-shrink: 0;
+  /* Prevents the header from shrinking */
+}
+
+.finish-logo {
+  height: 35px;
+  /* Adjust size as needed */
+  cursor: pointer;
+}
+
+.finish-signout-btn {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.finish-signout-btn:hover {
+  text-decoration: underline;
+}
+
+/* This new wrapper takes up the remaining space and centers its child */
+.plan-form-wrapper {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* The content box itself */
+.plan-form-content {
+  max-width: 440px;
+  margin: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* -- The rest of the styles are the same, just for completeness -- */
+
+.checkmark-icon-circle {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #e50914;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkmark-icon-circle svg {
+  width: 28px;
+  height: 28px;
+}
+
+.step-indicator {
+  font-size: 13px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.plan-form-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 60px;
+  text-align: left;
+  font-size: 18px;
+  align-self: flex-start;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.benefit-checkmark {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.next-button {
+  width: 100%;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 0;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.next-button:hover {
+  background-color: #f6121D;
 }
