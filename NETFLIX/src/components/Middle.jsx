@@ -22,7 +22,7 @@ function Middle() {
                 {loggedIn ? (
                     // IF LOGGED IN, show this button:
                     <div className="email-form">
-                        <Link to="/">
+                        <Link to="/finishsignup">
                             <button className="get-started-btn">
                                 Finish Sign Up
                             </button>
