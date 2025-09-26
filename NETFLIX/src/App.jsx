@@ -2,7 +2,6 @@
 
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
-
 import Home from './components/Home';
 import Middle from './components/Middle'; // Assuming you have this component
 import Navbar from './components/navbar';
@@ -14,8 +13,10 @@ import Footer from './components/Footer';
 import Signup from './components/Signup';
 import FinishSignUp from './components/FinishSignUp';
 import Signin from './components/Signin';
-import ProtectedRoute from './components/ProtectedRoute';
-
+import Subscription from './components/Subscription';
+import ChoosePayment from './components/ChoosePayment';
+import OptionOne from './components/optionOne';
+import OptionTwo from './components/optionTwo';
 import './App.css';
 
 function App() {
@@ -55,8 +56,11 @@ function App() {
           element={<Signin onLoginSuccess={handleLoginSuccess} />}
         />
 
-        {/* --- THE HOMEPAGE IS NOW A PUBLIC ROUTE --- */}
-        {/* It renders different content based on the isLoggedIn prop */}
+        <Route path="/choosepayment" element={<ChoosePayment />} />
+        <Route path="/subscription" element={<Subscription />} />
+        <Route path="/payment1opt" element={<OptionOne />} />
+        <Route path="/payment2opt" element={<OptionTwo />} />
+
         <Route
           path="/"
           element={

@@ -798,3 +798,582 @@ body {
 .sign {
   color: grey
 }
+
+
+/* subscription file  */
+
+/* src/components/Subscription.css */
+
+.subscription-page {
+  background-color: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.subscription-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.header-section {
+  margin-bottom: 40px;
+}
+
+.step-indicator {
+  font-size: 14px;
+  color: #555;
+}
+
+.main-heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.plans-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  /* Allows cards to wrap on smaller screens */
+}
+
+.plan-card {
+  flex: 1;
+  min-width: 260px;
+  max-width: 280px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  background-color: #f9f9f9;
+}
+
+.plan-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plan-card.selected {
+  border-color: #e50914;
+  box-shadow: 0 4px 20px rgba(229, 9, 20, 0.2);
+}
+
+.most-popular-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0071eb;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.plan-header {
+  padding: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.plan-header h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.plan-header p {
+  margin: 5px 0 0;
+  font-size: 16px;
+}
+
+/* Plan-specific header colors */
+.plan-blue {
+  background: linear-gradient(135deg, #0071eb, #004d9c);
+}
+
+.plan-purple {
+  background: linear-gradient(135deg, #8e44ad, #6c3483);
+}
+
+.plan-red {
+  background: linear-gradient(135deg, #e50914, #b20710);
+}
+
+.checkmark {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  color: #e50914;
+  border: 2px solid #e50914;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.plan-details {
+  padding: 40px 20px 20px;
+}
+
+.plan-detail-item {
+  margin-bottom: 15px;
+}
+
+.detail-label {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.detail-value {
+  margin: 5px 0 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #ddd;
+  margin: 15px 0;
+}
+
+.footer-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.legal-text {
+  font-size: 12px;
+  color: #777;
+  max-width: 900px;
+  margin: 10px auto;
+  line-height: 1.5;
+}
+
+.legal-text a {
+  color: #0071eb;
+  text-decoration: none;
+}
+
+.legal-text a:hover {
+  text-decoration: underline;
+}
+
+.move-forward-btn {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 40px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.move-forward-btn:hover {
+  background-color: #b20710;
+}
+
+/* src/components/ChoosePayment.css */
+
+/* --- Main Component Container - THIS IS THE FIX --- */
+.payment-page-container {
+  background-color: #fff;
+  /* Ensures the entire background area is white */
+  color: #333;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  /* Takes up the full width */
+  flex-grow: 1;
+  /* Fills all vertical space between header and footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  box-sizing: border-box;
+}
+
+/* --- Content Styles (These remain the same) --- */
+.payment-form-container {
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+}
+
+.lock-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #e50914;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+.step-indicator {
+  font-size: 14px;
+  color: #555;
+}
+
+.main-heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.sub-text,
+.security-text {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 15px 0;
+}
+
+.security-text strong {
+  font-weight: bold;
+}
+
+.encryption-badge {
+  text-align: right;
+  font-size: 12px;
+  color: #777;
+  margin: 20px 0 10px;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.payment-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #333;
+  transition: border-color 0.2s;
+}
+
+.payment-option:hover {
+  border-color: #555;
+}
+
+.payment-option-text {
+  text-align: left;
+  font-size: 16px;
+}
+
+.payment-logos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.payment-logos img {
+  height: 25px;
+}
+
+.chevron {
+  font-size: 24px;
+  font-weight: bold;
+  color: #777;
+}
+
+/* payment opt 1 
+*/
+/* src/components/OptionOne.css */
+
+/* --- Main Component Container - THIS IS THE FIX --- */
+.option-one-container {
+  background-color: #fff;
+  /* Ensures the entire background area is white */
+  color: #333;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  /* Takes up the full width */
+  flex-grow: 1;
+  /* Fills all vertical space between header and footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Vertically center the form if space allows */
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* --- Content Styles (These remain the same) --- */
+.credit-card-form-wrapper {
+  max-width: 440px;
+  width: 100%;
+}
+
+.main-heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 5px 0 15px;
+}
+
+.card-logos {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.card-logos img {
+  height: 25px;
+}
+
+.card-form .form-group {
+  margin-bottom: 15px;
+}
+
+.card-form input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .input-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  color: #8c8c8c;
+}
+
+.input-with-icon .help-icon {
+  border: 1px solid #8c8c8c;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  justify-content: center;
+  font-size: 14px;
+  cursor: help;
+}
+
+.plan-summary {
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.plan-summary .plan-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-summary .price {
+  font-weight: bold;
+}
+
+.plan-summary .plan-name {
+  font-size: 14px;
+  color: #555;
+}
+
+.plan-summary .change-link {
+  color: #0071eb;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.legal-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin: 15px 0;
+}
+
+.legal-text.small {
+  font-size: 12px;
+}
+
+.legal-text a {
+  color: #0071eb;
+  text-decoration: none;
+}
+
+.agreement-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.agreement-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+.agreement-checkbox label {
+  font-size: 14px;
+  color: #555;
+}
+
+.submit-membership-btn {
+  width: 100%;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.recaptcha-notice {
+  font-size: 12px;
+  color: #777;
+  margin-top: 15px;
+}
+
+.recaptcha-notice a {
+  color: #0071eb;
+  text-decoration: none;
+}
+
+/* src/components/OptionTwo.css */
+
+/* src/components/OptionTwo.css */
+
+/* Page layout now just structures the content vertically */
+.option-two-page-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.language-btn {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #aaa;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.sign-out-btn {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* --- Main Content Area (white background) --- */
+.option-two-content-area {
+  background-color: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-left: 20%;
+  padding: 60px 20px;
+}
+
+.upi-form-wrapper {
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+}
+
+.main-heading {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 5px 0 15px;
+  text-align: left;
+}
+
+.sub-text {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.upi-form .form-group {
+  margin-bottom: 20px;
+}
+
+.upi-form input[type="text"],
+.upi-form select {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #8c8c8c;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.upi-form select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M7%2010L12%2015L17%2010%22%20stroke%3D%22%23333%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.help-link {
+  display: block;
+  text-align: left;
+  color: #0071eb;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 24px;
+  cursor: pointer;
+  margin-top: 30px;
+}

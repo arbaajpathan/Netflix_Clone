@@ -1,8 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from './Footer'
 // Accept the onLogout function as a prop from App.js
-function FinishSignUp({ onLogout }) {
+function FinishSignUp({ isLoggedIn }) {
     const navigate = useNavigate();
 
     return (
@@ -53,8 +53,9 @@ function FinishSignUp({ onLogout }) {
                             No ads and no extra fees. Ever.
                         </li>
                     </ul>
-
-                    <button className="next-button">Next</button>
+                    <Link to="/subscription" className="next-button">
+                        <button className="next-button">Move Forward</button>
+                    </Link>
                 </div>
             </main>
             <Footer />
