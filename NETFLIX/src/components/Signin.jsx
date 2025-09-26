@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import homeBg from "../assets/home-bg.jpg";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
-function Signup() {
+// THE FIX IS HERE: The component now accepts `onLoginSuccess` as a prop.
+function Signin({ onLoginSuccess }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    const navigate = useNavigate(); // Hook for redirection
+    const navigate = useNavigate();
 
-    const handleSignup = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         setError("");
 
@@ -21,25 +22,27 @@ function Signup() {
         }
 
         try {
-            // FIX #1 & #2: Use correct port and correct axios syntax.
-            // axios.post takes the URL and the data object as arguments.
-            const response = await axios.post("http://localhost:5000/api/signup", {
+            const response = await axios.post("http://localhost:5000/api/signin", {
                 email: email,
                 password: password,
             });
 
+            const token = response.data.token;
+            localStorage.setItem('token', token);
 
-            navigate('/signin');
+            // This will now work because onLoginSuccess was passed in as a prop.
+            onLoginSuccess();
+
+            // Navigate to the home page after successfully logging in.
+            navigate('/');
 
         } catch (err) {
-            // FIX #4: Handle errors from axios
-            // 'err.response.data.message' will contain the error message from our server
             if (err.response && err.response.data && err.response.data.message) {
                 setError(err.response.data.message);
             } else {
-                setError("Signup failed. Please try again.");
+                setError("Login failed. Please check your connection and try again.");
             }
-            console.error("Signup error:", err);
+            console.error("Login error:", err);
         }
     };
 
@@ -49,10 +52,9 @@ function Signup() {
                 <img className="home-bg" src={homeBg} alt="netflix background" />
                 <div className="overlay"></div>
                 <div className="signup-container">
-                    <h1>Sign Up</h1> {/* Changed from Sign In to Sign Up for clarity */}
+                    <h1>Sign In</h1>
 
-                    {/* This form structure is fine */}
-                    <form onSubmit={handleSignup}>
+                    <form onSubmit={handleLogin}>
                         {error && <p style={{ color: 'orange', textAlign: 'center' }}>{error}</p>}
                         <div className="form-group">
                             <input
@@ -71,15 +73,12 @@ function Signup() {
                             />
                         </div>
                         <div className="form-actions">
-                            <button className="btn-signin" type="submit">Sign Up</button>
-                            {/* ... Rest of your form ... */}
+                            <button className="btn-signin" type="submit">Sign In</button>
                         </div>
                         <div className="sign">
-                            <h5>allready have an account  <Link to="/Signin">Sign In</Link></h5>
+                            <h5>Don't have an account? <Link to="/Signup">Sign Up</Link></h5>
                         </div>
                     </form>
-
-                    {/* ... Rest of your component ... */}
                 </div>
             </div>
             <Footer />
@@ -87,4 +86,4 @@ function Signup() {
     );
 }
 
-export default Signup;
+export default Signin;

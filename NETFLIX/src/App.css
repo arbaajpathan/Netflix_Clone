@@ -794,3 +794,7 @@ body {
 .next-button:hover {
   background-color: #f6121D;
 }
+
+.sign {
+  color: grey
+}

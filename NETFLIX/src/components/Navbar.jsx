@@ -1,42 +1,24 @@
 // src/components/Navbar.jsx
 
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function Navbar() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const navigate = useNavigate();
-
-    // Just like in Middle.js, we check the login status when the component mounts
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            setIsLoggedIn(true);
-        }
-    }, []);
-
-    const handleLogout = () => {
-        // 1. Remove the token from localStorage
-        localStorage.removeItem('token');
-
-        // 2. Update this component's local state
-        setIsLoggedIn(false);
-
-        // 3. Redirect the user
-        navigate('/signup');
-    };
+// This component is now simplified. It receives its state as props.
+function Navbar({ isLoggedIn, onLogout }) {
 
     return (
         <nav className="navbar">
             <button className="language-btn">Language ▼</button>
 
+            {/* If the user is logged in, show the Sign Out button */}
             {isLoggedIn ? (
-                <button onClick={handleLogout} className="signin-btn">
+                <button onClick={onLogout} className="signin-btn">
                     Sign Out
                 </button>
             ) : (
-                <Link to="/signup">
-                    <button className="signin-btn">Sign Up</button>
+                // If logged out, show the Sign In button that links to the correct page
+                <Link to="/signin">
+                    <button className="signin-btn">Sign In</button>
                 </Link>
             )}
         </nav>

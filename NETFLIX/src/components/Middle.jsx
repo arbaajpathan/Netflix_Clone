@@ -1,16 +1,13 @@
-// Middle.jsx
-import React, { useState, useEffect } from 'react';
+// src/components/Middle.jsx
+
+import React from 'react'; // We no longer need useState or useEffect
 import { Link } from "react-router-dom";
-function Middle() {
-    const [loggedIn, SetloggedIn] = useState(false);
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            SetloggedIn(true);
-        }
-    }, [])
+// 1. Accept `isLoggedIn` as a prop from App.js.
+function Middle({ isLoggedIn }) {
 
+    // 2. All local state and useEffect hooks have been removed.
+    // This component is now a "dumb" component that only displays what it's told.
 
     return (
         <>
@@ -18,8 +15,8 @@ function Middle() {
                 <h1>Unlimited movies, TV shows and more</h1>
                 <h2>Watch anywhere. Cancel anytime.</h2>
 
-                {/* 3. The conditional rendering now uses our local state variable 'isLoggedIn' */}
-                {loggedIn ? (
+                {/* 3. The conditional rendering now uses the `isLoggedIn` prop. */}
+                {isLoggedIn ? (
                     // IF LOGGED IN, show this button:
                     <div className="email-form">
                         <Link to="/finishsignup">
@@ -29,8 +26,9 @@ function Middle() {
                         </Link>
                     </div>
                 ) : (
-                    // IF LOGGED OUT, show the original form:
+                    // IF LOGGED OUT, show the original email form:
                     <div>
+                        <p>Ready to watch? Enter your email to create or restart your membership.</p>
                         <div className="email-form">
                             <input
                                 className="email-input"

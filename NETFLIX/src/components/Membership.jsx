@@ -1,12 +1,11 @@
 // src/components/Membership.jsx
 
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from 'react'; // <-- Import hooks
+import React, { useState, useEffect } from 'react';
 
 
 
-
-function Membership() {
+function Membership({ isLoggedIn }) {
 
     const [item, setitem] = useState(false);
 
@@ -21,7 +20,7 @@ function Membership() {
     return (
         <div className="membership-section">
             {/* 3. The conditional rendering now uses our local state variable 'isLoggedIn' */}
-            {item ? (
+            {isLoggedIn ? (
                 // IF LOGGED IN, show this button:
                 <div className="email-form">
                     <Link to="/finishsignup">
